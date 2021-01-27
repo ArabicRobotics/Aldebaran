@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<package uuid="naoserver-28f05f" version="1.1.0">
+ <names>
+  <name lang="en_US">NAOServer</name>
+ </names>
+ <descriptions>
+  <description lang="en_US">This Application for NAO to act like server and client , send and receive data from any device</description>
+ </descriptions>
+ <descriptionLanguages>
+  <language>en_US</language>
+ </descriptionLanguages>
+ <contents>
+  <behaviorContent path="behavior_1">
+   <nature>interactive</nature>
+   <permissions/>
+  </behaviorContent>
+ </contents>
+ <requirements>
+  <naoqiRequirement/>
+  <robotRequirement/>
+ </requirements>
+</package>
