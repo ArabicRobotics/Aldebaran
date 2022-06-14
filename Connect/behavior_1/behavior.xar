@@ -374,7 +374,7 @@ class MyClass(GeneratedClass):
                           </BehaviorLayer>
                         </Timeline>
                       </Box>
-                      <Box name="NAOServer" id="2" localization="8" tooltip="" x="1491" y="17">
+                      <Box name="NAOServer" id="2" localization="8" tooltip="" x="1549" y="11">
                         <bitmap>media/images/box/interaction/target.png</bitmap>
                         <script language="4">
                           <content>
@@ -730,7 +730,7 @@ class MyClass(GeneratedClass):
                         </Parameter>
                         <Resource name="Speech" type="Lock" timeout="0" />
                       </Box>
-                      <Box name="Say Text" id="5" localization="8" tooltip="Say the text received on its input." x="736" y="435">
+                      <Box name="Say Text" id="5" localization="8" tooltip="Say the text received on its input." x="960" y="489">
                         <bitmap>media/images/box/interaction/say.png</bitmap>
                         <script language="4">
                           <content>
@@ -786,7 +786,7 @@ class MyClass(GeneratedClass):
                         <Parameter name="Speed (%)" inherits_from_parent="1" content_type="1" value="100" default_value="100" min="50" max="200" tooltip="Changes the speed of the voice.&#x0A;&#x0A;Note: For a better effect, you can compensate this parameter with the voice&#x0A;shaping parameter. For example, if you want to increase by 20% the speed, you&#x0A;will have to decrease by 20% the voice shaping to keep a constant average&#x0A;speed." id="6" />
                         <Resource name="Speech" type="Lock" timeout="0" />
                       </Box>
-                      <Box name="switcher" id="7" localization="8" tooltip="" x="1076" y="125">
+                      <Box name="switcher" id="7" localization="8" tooltip="" x="882" y="166">
                         <bitmap>media/images/box/box-python-script.png</bitmap>
                         <script language="4">
                           <content>
@@ -814,18 +814,17 @@ class MyClass(GeneratedClass):
         completeString= '{"op": "command","value": "setActive","requestId": 2,"params": "'+str(self.currentRobot)+'"}'
         self.onStopped(completeString)
     def getWord(self,p):
+
         #Change Robot
         if "change" in p.lower():
             self.changeRobot()
         #Lights
         if "on" in p.lower():
-            #completeString = '{"op":"set","device":"robot","details":{"name": "Leds", "data": {"op": "c", "n": 1,"s":8}}}'
-            completeString = '{"op": "command","value": "run","requestId": 4,"params": "connection---send---<c,2,8,0>"}'
+            self.light("<c,2,8,0>")
             self.onStopped(completeString) #activate the output of the box
         if "off" in p.lower():
             #'completeString = '{"op":"set","device":"robot","details":{"name": "Leds", "data": {"op": "c", "n": 1,"s":9}}}'
-            completeString = '{"op": "command","value": "run","requestId": 4,"params": "connection---send---<c,2,9,0>"}'
-            self.onStopped(completeString) #activate the output of the box
+            self.light("<c,2,9,0>")
         #Movement
         if "left"in p.lower():
             self.move("L")
@@ -846,10 +845,14 @@ class MyClass(GeneratedClass):
         self.onUnload() #it is recommended to reuse the clean-up as the box is stopped return
             #{"op":"set","device":"robot","details":{"name": "Leds", "data": {"op": "c", "n": 1,"s":1}}}
     def move(self,parameters):
-
         self.outClass("Movement")
         self.outMethod("move")
-        self.outParameters("L")]]>
+        self.outParameters(parameters)
+
+    def light(self,parameters):
+        self.outClass("connection")
+        self.outMethod("send")
+        self.outParameters(parameters)]]>
                           </content>
                         </script>
                         <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
@@ -1050,7 +1053,7 @@ class MyClass(GeneratedClass):
                         </Parameter>
                         <Resource name="All motors" type="Lock" timeout="0" />
                       </Box>
-                      <Box name="Text Edit" id="15" localization="8" tooltip="Send the text you entered when the input is stimulated." plugin="textedit_plugin" x="304" y="144">
+                      <Box name="Text Edit" id="15" localization="8" tooltip="Send the text you entered when the input is stimulated." plugin="textedit_plugin" x="385" y="74">
                         <bitmap>media/images/box/interaction/vocabulary.png</bitmap>
                         <script language="4">
                           <content>
@@ -1060,19 +1063,19 @@ class MyClass(GeneratedClass):
 		GeneratedClass.__init__(self)
 
 	def onInput_onStart(self):
-		self.onStopped("Change")]]>
+		self.onStopped("Up")]]>
                           </content>
                         </script>
                         <pluginContent>
                           <text>
-                            <![CDATA[Change]]>
+                            <![CDATA[Up]]>
                           </text>
                         </pluginContent>
                         <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when Diagram is loaded." id="1" />
                         <Input name="onStart" type="1" type_size="1" nature="1" inner="0" tooltip="To send the text on the output." id="2" />
                         <Output name="onStopped" type="3" type_size="1" nature="2" inner="0" tooltip="The text you entered." id="3" />
                       </Box>
-                      <Box name="Head" id="3" localization="8" tooltip="Enter description here" x="1254" y="616">
+                      <Box name="Head" id="3" localization="8" tooltip="Enter description here" x="1085" y="580">
                         <bitmap>media/images/box/interaction/smile.png</bitmap>
                         <script language="4">
                           <content>
@@ -1185,7 +1188,7 @@ class MyClass(GeneratedClass):
                           </BehaviorLayer>
                         </Timeline>
                       </Box>
-                      <Box name="RRMsg" id="10" localization="8" tooltip="Prepare the  RemoRobo Message to send to remorobo Controller" x="1322" y="262">
+                      <Box name="RRMsg" id="10" localization="8" tooltip="Prepare the  RemoRobo Message to send to remorobo Controller" x="1167" y="207">
                         <bitmap>media/images/box/interaction/uramark.png</bitmap>
                         <script language="4">
                           <content>

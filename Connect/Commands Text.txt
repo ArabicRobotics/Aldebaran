@@ -35,7 +35,7 @@ Move/ look Eyes:
   "op": "command",
   "value": "run",
   "requestId": 6,
-  "params": "Movement---move---R---0---None"
+  "params": "Movement---move---R---S---None"
 }
 
 Move Omni : 
@@ -44,7 +44,7 @@ Move Omni :
   "op": "command",
   "value": "run",
   "requestId": 10,
-  "params": "Movement---move---357---138----7"
+  "params": "Movement---move---357---138----7---"
 }
 
 
